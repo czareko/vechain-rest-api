@@ -13,6 +13,7 @@ What needs to be improved in this sample project:
 - Security
 - Unit and integration tests
 - Code static analysis
+- Some libraries should be updated
 
 ## Command line methods
 
@@ -27,6 +28,22 @@ Run command:
 ```
 npm run start
 ```
+## Run as a Docker image
+
+This is the next step to build more complicated local environment
+
+First build a docker image
+
+```
+docker build -t vechain-service .
+```
+Next run the image
+
+```
+docker run -it -p 8080:8080 --network="host" vechain-service
+```
+This machine needs to connect with other services from the local stack, so we have to open it for localhost.
+
 
 ## Exposed services
 
