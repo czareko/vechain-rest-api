@@ -12,6 +12,9 @@ export class VechainRoutes extends CommonRoutesConfig {
         this.app.param(`address`, VechainMiddleware.extractAddress);
         this.app.route(`/balance/:address`)
             .get(VechainController.getBalance);
+        this.app.route('/sendTokens')
+            .post(VechainMiddleware.validateRequiredTransferBodyFields,
+                VechainController.sendTokens);
         return this.app;
     }
 
