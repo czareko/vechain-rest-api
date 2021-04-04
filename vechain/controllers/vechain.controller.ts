@@ -6,9 +6,8 @@ class VechainController {
 
     async getBalance(req: express.Request, res: express.Response){
 
-        const balance = await vechainService.balance(req.params.address);
-        console.log("Balance cons: "+balance)
-        res.status(200).send({balance: balance});
+        const result = await vechainService.balance(req.params.address);
+        res.status(200).send(result);
     }
 }
 export default new VechainController();
