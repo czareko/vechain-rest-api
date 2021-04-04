@@ -6,6 +6,7 @@ import * as expressWinston from 'express-winston';
 import cors from 'cors'
 import {CommonRoutesConfig} from './common/common.routes.config';
 import debug from 'debug';
+import {VechainRoutes} from "./vechain/vechain.routes.config";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -25,6 +26,8 @@ app.use(expressWinston.logger({
         winston.format.json()
     )
 }));
+
+routes.push(new VechainRoutes(app));
 
 app.use(expressWinston.errorLogger({
     transports: [
